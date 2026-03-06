@@ -22,7 +22,7 @@ console.log("Camera positioned");
 // Renderer
 const renderer = new THREE.WebGLRenderer({ alpha:true, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+document.querySelector('.hero-content').appendChild(renderer.domElement);
 console.log("Renderer initialized");
 
 // Orbit Controls

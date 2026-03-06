@@ -8,12 +8,16 @@ body{
     width: 100vw;
     background-color: rgb(0, 0, 0);
     overflow-x: hidden;
-       
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    /* background: linear-gradient(120deg, #141e30, #243b55); */
+
 }
 .page1{
     height: 100vh;
     width: 100%;
-    position: relative;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
 }
 h1,h2,h3,h4,h5,h6,p,a{
     color: rgb(123, 185, 255);
@@ -80,6 +84,7 @@ h1,h2,h3,h4,h5,h6,p,a{
 .header-right a:hover .overlay{
     width: 100%;
 }
+
 .button{
     height: 50%;
     width: 40px;
@@ -96,6 +101,8 @@ h1,h2,h3,h4,h5,h6,p,a{
     transition: 0.2s ease-in-out;
     transform-origin: top left;
     animation: heart-beat 3.5s infinite both ease-in-out; 
+    z-index: 4;
+    /* transform-origin: center; */
 }
 .animation{
     width: 100%;
@@ -140,6 +147,8 @@ canvas{
     color: aliceblue;
     position: absolute;
     /* overflow: hidden; */
+    z-index: 3;
+    transform-origin: center;
 }
 
 .blob1, .blob2{
@@ -147,36 +156,79 @@ canvas{
     height: 250px;
     position: absolute;
     top: 0;
-    left: 35%;
-    z-index: -1;
+    left: 25%;
     border-radius: 100%;
     background-color: rgba(255, 255, 255, 0.1); /* Very light white overlay */
-    backdrop-filter: blur(8px); /* Minimal blur */
+    /* backdrop-filter: blur(8px);  */
     filter: blur(50px);
 }
 .blob1{
     animation: blob1 5s infinite alternate-reverse ease-in-out;
+    display: none;
 }
 .blob2{
     animation: blob2 6s infinite alternate-reverse ease-in-out;
+    display: none;
+}
+.gui2{
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background-color: rgb(0, 255, 34);
+    border-radius: 50%;
+    z-index: -2;
+    transform: translate(-50%,-50%);
+    transform-origin: center;
+    pointer-events: none;
+    
+}
+.gui{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    z-index: -1;
+    transform: translate(-50%,-50%);
+    transform-origin: center;
+    filter: blur(5px);
+    pointer-events: none;
+}
+.sticky-container{
+    height: 600vh;
+    width: 100vw;
+}
+.page1-cover{
+    width: 7vw;
+    height: 7vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    pointer-events: none;
+    background-color: rgb(86, 175, 26);
+    z-index: 99;
+    
 }
 .page2{
-    height: 100vh;
     width: 100vw;
-    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    background-color: rgb(86, 175, 26);
 }
+
+
 @keyframes heart-beat {
     0%{
         transform: translate(-50%,-50%);
-        scale: 1;
+        scale: 1.2;
     }
     50% {
         transform: translate(-50%, -25%);
-        scale: 1.1;
+        scale: 1.5;
     }
     100%{
         transform: translate(-50%,-50%);
-        scale: 1;
+        scale: 1.2;
     }      
 }
 @keyframes static {
@@ -208,10 +260,40 @@ canvas{
 
 
 
-@media (max-width: 600px) {
-  .header{
-    display: none;
-  }
+/* tablet */
+@media (min-width: 601px) and (max-width: 1200px) { 
+    .header{
+        display: none;
+    }
+    .gui,.gui2{
+        display: none;
+    }
 }
 
 
+/* mobile */
+@media (max-width: 600px) {
+  .header{
+    display: block;
+  }
+  .hero-content{
+    justify-content: center;
+  }
+  .hero-content h1{
+        font-size: 40px;
+        font-family: "Notable", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+        padding-right: 5%;
+        color: aliceblue;
+        position: absolute;
+        /* overflow: hidden; */
+        z-index: 3;
+        transform-origin: center;
+        
+    }
+    .gui,.gui2{
+        display: none;
+    }
+}
