@@ -93,7 +93,7 @@ loader.load(
     object.traverse(function (child) {
       if (child.isMesh) {
         child.material = new THREE.MeshStandardMaterial({
-          color: 0x00ff00,
+          color: 0x69a2ff,
           metalness: 1
         });
       }
@@ -119,12 +119,46 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
+const blobs = [];
+const sphereGeometry = new THREE.SphereGeometry(0.15, 12, 12);
 
+for (let i = 0; i < 60; i++) {
+
+  const material = new THREE.MeshStandardMaterial({
+    color: 0x3d7ac4,
+    roughness: 1,
+    metalness: 0
+  });
+
+  const sphere = new THREE.Mesh(sphereGeometry, material);
+
+  sphere.position.set(
+    (Math.random() - 0.5) * 30,
+    -(Math.random() -0.25) * 20,
+    -(Math.random()-0.5) * 30
+  );
+
+  sphere.userData.basePos = sphere.position.clone();
+  sphere.userData.phase = Math.random() * Math.PI * 2;
+
+  blobs.push(sphere);
+  scene.add(sphere);
+}
 // Render loop
 function animate() {
   requestAnimationFrame(animate);
-    object_3d.rotation.y+=0.01/1.5
-    object_3d.position.y = Math.sin(object_3d.rotation.y)
+    if(object_3d){
+      object_3d.rotation.y+=0.01/1.5
+      object_3d.position.y = Math.sin(object_3d.rotation.y)
+    }
+    const t = performance.now() * 0.001;
+    blobs.forEach(blob => {
+    const base = blob.userData.basePos;
+    const phase = blob.userData.phase;
+
+    blob.position.x = base.x + Math.sin(t + phase) * 0.2;
+    blob.position.y = base.y + Math.cos(t + phase) * 0.2;
+  });
   renderer.render(scene, camera);
 }
 
