@@ -169,6 +169,8 @@ canvas{
 .blob2{
     animation: blob2 6s infinite alternate-reverse ease-in-out;
     display: none;
+    background-color: white;
+    opacity: 0.25;
 }
 .gui2{
     position: absolute;
