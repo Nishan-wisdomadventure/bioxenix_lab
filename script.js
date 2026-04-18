@@ -50,7 +50,7 @@ function handle_gui(){
     })
     document.querySelector('.button').addEventListener('mouseleave',()=>{
         if(!down){document.querySelector('.gui').style.backgroundColor = `rgb(255, 255, 255)`
-        document.querySelector('.gui2').style.backgroundColor = `rgb(0, 255, 34)`
+        document.querySelector('.gui2').style.backgroundColor = `rgb(255, 255, 255)`
         document.querySelector('.gui').style.width = `${40*1}px`
         document.querySelector('.gui').style.height = `${40*1}px`
         document.querySelector('.gui2').style.width = `${70*1}px`
