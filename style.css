@@ -207,14 +207,14 @@ canvas{
     top: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     pointer-events: none;
-    background-color: rgb(86, 175, 26);
+    background-color: rgb(123, 185, 255);
     z-index: 99;
     
 }
 .page2{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(86, 175, 26);
+    background-color: rgb(123, 185, 255);
 }
 
 
